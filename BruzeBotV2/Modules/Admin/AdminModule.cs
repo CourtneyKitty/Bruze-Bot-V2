@@ -59,5 +59,30 @@ namespace BruzeBotV2.Modules.Admin
 
             await Context.Channel.SendMessageAsync("", false, embed);
         }
+
+        [Command("settings prefix")]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        public async Task SettingsPrefix(String prefix = null)
+        {
+            if (prefix != null)
+            {
+                BotConfig config = new BotConfig();
+
+                config.Prefix = prefix;
+                config.Token = BotConfig.Load().Token;
+                config.NewMemberRank = BotConfig.Load().NewMemberRank;
+                config.UserRank = BotConfig.Load().UserRank;
+                config.MusicRank = BotConfig.Load().MusicRank;
+                config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
+                config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.Save();
+
+                var embed = new EmbedBuilder() { Color = Colours.adminCol };
+                embed.Title = ("Settings Prefix");
+                embed.Description = ("Prefix has been set to " + prefix + " successfully!");
+                await ReplyAsync("", false, embed.Build());
+            }
+            else await errors.sendErrorTemp(Context.Channel, "You must specify a prefix!", Colours.errorCol);
+        }
     }
 }
