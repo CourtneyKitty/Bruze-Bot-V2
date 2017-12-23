@@ -101,8 +101,8 @@ namespace BruzeBotV2.Modules.Public
         }
 
         [Command("rank remove")]
-        [Remarks("Wipes the rank to the user.")]
-        public async Task RankWipe(string rank)
+        [Remarks("Removes the rank to the user.")]
+        public async Task RankRemove(string rank)
         {
             var chan = Context.Channel;
             var user = Context.User;
@@ -140,7 +140,7 @@ namespace BruzeBotV2.Modules.Public
                 var message = await ReplyAsync("@" + Context.User.Id + " you was removed from the " + rank.ToLower() + " rank successfully!");
                 await Context.Message.DeleteAsync();
             }
-            else await errors.sendErrorTemp(chan, "", Colours.errorCol);
+            else await errors.sendErrorTemp(chan, "Parameter not recognised. Parameters are as follows user, music, programming or graphics", Colours.errorCol);
         }
     }
 }
