@@ -61,6 +61,7 @@ namespace BruzeBotV2.Modules.Public
         [Command("help admin")]
         [Alias("? admin")]
         [Remarks("Help for admins.")]
+        [RequireUserPermission(GuildPermission.Administrator)]
         public async Task HelpAdmin()
         {
             var embed = new EmbedBuilder() { Color = Colours.helpCol };
