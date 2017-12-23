@@ -134,5 +134,30 @@ namespace BruzeBotV2.Modules.Admin
             }
             else await errors.sendErrorTemp(Context.Channel, "You must specify a rank!", Colours.errorCol);
         }
+
+        [Command("settings userrank")]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        public async Task SettingsUserRank(String userrank = null)
+        {
+            if (userrank != null)
+            {
+                BotConfig config = new BotConfig();
+
+                config.Prefix = BotConfig.Load().Prefix;
+                config.Token = BotConfig.Load().Token;
+                config.NewMemberRank = BotConfig.Load().NewMemberRank;
+                config.UserRank = userrank;
+                config.MusicRank = BotConfig.Load().MusicRank;
+                config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
+                config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.Save();
+
+                var embed = new EmbedBuilder() { Color = Colours.adminCol };
+                embed.Title = ("Settings User Rank");
+                embed.Description = ("User rank has been set to " + userrank + " successfully!");
+                await ReplyAsync("", false, embed.Build());
+            }
+            else await errors.sendErrorTemp(Context.Channel, "You must specify a rank!", Colours.errorCol);
+        }
     }
 }
