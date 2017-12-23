@@ -12,7 +12,7 @@ namespace BruzeBotV2.Modules.Public
     {
         Errors errors = new Errors();
 
-        [Command("rank")]
+        [Command("rank add")]
         [Remarks("Assigns the rank to the user.")]
         public async Task Rank(string rank)
         {
@@ -98,6 +98,49 @@ namespace BruzeBotV2.Modules.Public
                 await Context.Message.DeleteAsync();
                 await errors.sendErrorTemp(chan, "You need to choose one of the listed roles!", Colours.errorCol);
             }
+        }
+
+        [Command("rank remove")]
+        [Remarks("Wipes the rank to the user.")]
+        public async Task RankWipe(string rank)
+        {
+            var chan = Context.Channel;
+            var user = Context.User;
+            var userName = user as SocketGuildUser;
+
+            if (rank.ToLower().Equals("user"))
+            {
+                var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().UserRank);
+                await (user as IGuildUser).RemoveRoleAsync(role);
+
+                var message = await ReplyAsync("@" + Context.User.Id + " you was removed from the " + rank.ToLower() + " rank successfully!");
+                await Context.Message.DeleteAsync();
+            }
+            else if (rank.ToLower().Equals("music"))
+            {
+                var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().MusicRank);
+                await (user as IGuildUser).RemoveRoleAsync(role);
+
+                var message = await ReplyAsync("@" + Context.User.Id + " you was removed from the " + rank.ToLower() + " rank successfully!");
+                await Context.Message.DeleteAsync();
+            }
+            else if (rank.ToLower().Equals("programming"))
+            {
+                var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().ProgrammingRank);
+                await (user as IGuildUser).RemoveRoleAsync(role);
+
+                var message = await ReplyAsync("@" + Context.User.Id + " you was removed from the " + rank.ToLower() + " rank successfully!");
+                await Context.Message.DeleteAsync();
+            }
+            else if (rank.ToLower().Equals("graphics"))
+            {
+                var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().GraphicsRank);
+                await (user as IGuildUser).RemoveRoleAsync(role);
+
+                var message = await ReplyAsync("@" + Context.User.Id + " you was removed from the " + rank.ToLower() + " rank successfully!");
+                await Context.Message.DeleteAsync();
+            }
+            else await errors.sendErrorTemp(chan, "", Colours.errorCol);
         }
     }
 }
