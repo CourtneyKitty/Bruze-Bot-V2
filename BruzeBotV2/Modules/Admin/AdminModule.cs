@@ -85,7 +85,7 @@ namespace BruzeBotV2.Modules.Admin
             else await errors.sendErrorTemp(Context.Channel, "You must specify a prefix!", Colours.errorCol);
         }
 
-        [Command("settings tokn")]
+        [Command("settings token")]
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task SettingsToken(String token = null)
         {
@@ -108,6 +108,31 @@ namespace BruzeBotV2.Modules.Admin
                 await ReplyAsync("", false, embed.Build());
             }
             else await errors.sendErrorTemp(Context.Channel, "You must specify a token!", Colours.errorCol);
+        }
+
+        [Command("settings newmember")]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        public async Task SettingsNewMember(String newmember = null)
+        {
+            if (newmember != null)
+            {
+                BotConfig config = new BotConfig();
+
+                config.Prefix = BotConfig.Load().Prefix;
+                config.Token = BotConfig.Load().Token;
+                config.NewMemberRank = newmember;
+                config.UserRank = BotConfig.Load().UserRank;
+                config.MusicRank = BotConfig.Load().MusicRank;
+                config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
+                config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.Save();
+
+                var embed = new EmbedBuilder() { Color = Colours.adminCol };
+                embed.Title = ("Settings New Member Rank");
+                embed.Description = ("New member rank has been set to " + newmember + " successfully!");
+                await ReplyAsync("", false, embed.Build());
+            }
+            else await errors.sendErrorTemp(Context.Channel, "You must specify a rank!", Colours.errorCol);
         }
     }
 }
