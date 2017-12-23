@@ -37,7 +37,7 @@ namespace BruzeBotV2.Modules.Public
                     await (user as IGuildUser).RemoveRoleAsync(remrole);
                 }
 
-                var message = await ReplyAsync("Your role has been set!");
+                var message = await ReplyAsync("@" + Context.User.Id + " you were given the user rank successfully!");
                 //await Delete.DelayDeleteMessage(message, 10);
 
                 await Context.Message.DeleteAsync();
@@ -56,8 +56,7 @@ namespace BruzeBotV2.Modules.Public
                     await (user as IGuildUser).RemoveRoleAsync(remrole);
                 }
 
-                var message = await ReplyAsync("Your role has been set!");
-                //await Delete.DelayDeleteMessage(message, 10);
+                var message = await ReplyAsync("@" + Context.User.Id + " you were given the music rank successfully!");
 
                 await Context.Message.DeleteAsync();
             }
@@ -75,8 +74,7 @@ namespace BruzeBotV2.Modules.Public
                     await (user as IGuildUser).RemoveRoleAsync(remrole);
                 }
 
-                var message = await ReplyAsync("Your role has been set!");
-                //await Delete.DelayDeleteMessage(message, 10);
+                var message = await ReplyAsync("@" + Context.User.Id + " you were given the programming rank successfully!");
 
                 await Context.Message.DeleteAsync();
             }
@@ -94,15 +92,14 @@ namespace BruzeBotV2.Modules.Public
                     await (user as IGuildUser).RemoveRoleAsync(remrole);
                 }
 
-                var message = await ReplyAsync("Your role has been set!");
-                //await Delete.DelayDeleteMessage(message, 10);
+                var message = await ReplyAsync("@" + Context.User.Id + " you were given the graphics rank successfully!");
 
                 await Context.Message.DeleteAsync();
             }
             else
             {
-                await errors.sendError(chan, "You need to choose one of the listed roles!", Colours.errorCol);
-                //await Delete.DelayDeleteMessage(message, 10);
+                await Context.Message.DeleteAsync();
+                await errors.sendErrorTemp(chan, "You need to choose one of the listed roles!", Colours.errorCol);
             }
         }
     }
