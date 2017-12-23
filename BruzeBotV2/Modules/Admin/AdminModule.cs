@@ -58,7 +58,6 @@ namespace BruzeBotV2.Modules.Admin
             embed.AddField(graphicsField);
 
             await Context.Channel.SendMessageAsync("", false, embed);
-
         }
     }
 }
