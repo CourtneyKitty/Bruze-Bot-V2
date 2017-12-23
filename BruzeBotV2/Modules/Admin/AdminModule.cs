@@ -84,5 +84,30 @@ namespace BruzeBotV2.Modules.Admin
             }
             else await errors.sendErrorTemp(Context.Channel, "You must specify a prefix!", Colours.errorCol);
         }
+
+        [Command("settings tokn")]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        public async Task SettingsToken(String token = null)
+        {
+            if (token != null)
+            {
+                BotConfig config = new BotConfig();
+
+                config.Prefix = BotConfig.Load().Prefix;
+                config.Token = token;
+                config.NewMemberRank = BotConfig.Load().NewMemberRank;
+                config.UserRank = BotConfig.Load().UserRank;
+                config.MusicRank = BotConfig.Load().MusicRank;
+                config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
+                config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.Save();
+
+                var embed = new EmbedBuilder() { Color = Colours.adminCol };
+                embed.Title = ("Settings Token");
+                embed.Description = ("Token has been set to " + token + " successfully!");
+                await ReplyAsync("", false, embed.Build());
+            }
+            else await errors.sendErrorTemp(Context.Channel, "You must specify a token!", Colours.errorCol);
+        }
     }
 }
