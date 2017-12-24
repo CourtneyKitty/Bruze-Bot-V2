@@ -229,9 +229,9 @@ namespace BruzeBotV2.Modules.Admin
         }
 
         /** Sub Rank Stuff **/
-        [Command("create subrank")]
+        [Command("subrank create")]
         [RequireUserPermission(GuildPermission.Administrator)]
-        public async Task CreateSubRank(string title = null)
+        public async Task CreateSubRank([Remainder] string title = null)
         {
             if (title != null)
             { 
@@ -255,8 +255,9 @@ namespace BruzeBotV2.Modules.Admin
                     // Success Message
                     var embed = new EmbedBuilder() { Color = Colours.adminCol };
                     embed.Title = "Create Sub Rank";
-                    embed.Description = "The sub rank " + title + " was created successfully!";
-                    await Context.Channel.SendMessageAsync("", false, embed);
+                    embed.Description = "The sub rank '" + title + "' was created successfully!";
+                    var message = await Context.Channel.SendMessageAsync("", false, embed);
+                    await Delete.DelayDeleteMessage(message, 10);
                 }
                 else await errors.sendErrorTemp(Context.Channel, "You have used up all sub ranks!", Colours.errorCol);
             }
