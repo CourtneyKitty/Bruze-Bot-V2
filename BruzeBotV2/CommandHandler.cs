@@ -7,6 +7,7 @@ using System;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using BruzeBotV2.Config;
+using BruzeBotV2.util;
 
 namespace BruzeBotV2
 {
@@ -81,6 +82,36 @@ namespace BruzeBotV2
         public async Task SetGame()
         {
             await bot.SetGameAsync(BotConfig.Load().Prefix + "help");
+        }
+
+        Errors errors = new Errors();
+        [Command("settings prefix")]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        public async Task SettingsPrefix(String prefix = null)
+        {
+            if (prefix != null)
+            {
+                BotConfig config = new BotConfig();
+
+                config.Prefix = prefix;
+                config.Token = BotConfig.Load().Token;
+                config.NewMemberRank = BotConfig.Load().NewMemberRank;
+                config.UserRank = BotConfig.Load().UserRank;
+                config.MusicRank = BotConfig.Load().MusicRank;
+                config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
+                config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.Messages = BotConfig.Load().Messages;
+                config.Members = BotConfig.Load().Members;
+                config.Save();
+
+                await bot.SetGameAsync(BotConfig.Load().Prefix + "help");
+
+                var embed = new EmbedBuilder() { Color = Colours.adminCol };
+                embed.Title = ("Settings Prefix");
+                embed.Description = ("Prefix has been set to " + prefix + " successfully!");
+                await ReplyAsync("", false, embed.Build());
+            }
+            else await errors.sendErrorTemp(Context.Channel, "You must specify a prefix!", Colours.errorCol);
         }
 
         public async Task ConfigureAsync()
