@@ -210,5 +210,37 @@ namespace BruzeBotV2.Modules.Public
             }
             else await errors.sendErrorTemp(chan, "Parameter not recognised. Parameters are as follows user, music, programming or graphics", Colours.errorCol);
         }
+
+        [Command("ranks")]
+        public async Task ranks()
+        {
+            var members = BotConfig.Load().Members;
+            var users = RankSaves.Load().userCount;
+            var music = RankSaves.Load().musicCount;
+            var programming = RankSaves.Load().programmingCount;
+            var graphics = RankSaves.Load().graphicsCount;
+            var newbs = RankSaves.Load().newMembersCount;
+
+            var embed = new EmbedBuilder() { Color = Colours.generalCol };
+            var usersField = new EmbedFieldBuilder() { Name = BotConfig.Load().UserRank + ":", Value = users };
+            var musicField = new EmbedFieldBuilder() { Name = BotConfig.Load().MusicRank + ":", Value = music };
+            var programmingField = new EmbedFieldBuilder() { Name = BotConfig.Load().ProgrammingRank + ":", Value = programming };
+            var graphicsField = new EmbedFieldBuilder() { Name = BotConfig.Load().GraphicsRank + ":", Value = graphics };
+            var newbsField = new EmbedFieldBuilder() { Name = "New", Value = "That leaves " + newbs + " not in any rank yet!" };
+
+            var footer = new EmbedFooterBuilder() { Text = "Requested by " + Context.User.Username };
+
+            embed.Title = ("Members Count");
+            embed.Description = ("There are a total of " + members + " members in the discord, how many in each rank?");
+            embed.AddField(usersField);
+            embed.AddField(musicField);
+            embed.AddField(programmingField);
+            embed.AddField(graphicsField);
+            embed.AddField(newbsField);
+            embed.WithFooter(footer);
+            embed.WithCurrentTimestamp();
+
+            await Context.Channel.SendMessageAsync("", false, embed);
+        }
     }
 }

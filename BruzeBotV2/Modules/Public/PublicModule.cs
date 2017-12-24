@@ -51,28 +51,5 @@ namespace BruzeBotV2.Modules.Public
 
             await Context.Channel.SendMessageAsync("", false, embed);
         }
-
-        [Command("ranks")]
-        public async Task ranks()
-        {
-            var members = BotConfig.Load().Members;
-            var users = RankSaves.Load().userCount;
-            var music = RankSaves.Load().musicCount;
-            var programming = RankSaves.Load().programmingCount;
-            var graphics = RankSaves.Load().graphicsCount;
-            var newbs = RankSaves.Load().newMembersCount;
-
-            var embed = new EmbedBuilder() { Color = Colours.generalCol };
-            var usersField = new EmbedFieldBuilder() { Name = BotConfig.Load().UserRank + ":", Value = users };
-            var musicField = new EmbedFieldBuilder() { Name = BotConfig.Load().MusicRank + ":", Value = music };
-            var programmingField = new EmbedFieldBuilder() { Name = BotConfig.Load().ProgrammingRank + ":", Value = programming };
-            var graphicsField = new EmbedFieldBuilder() { Name = BotConfig.Load().GraphicsRank + ":", Value = graphics };
-            var newbsField = new EmbedFieldBuilder() { Value = "That leaves " +  newbs + " not in any rank yet!"};
-
-            embed.Title = ("Members Count");
-            embed.Description = ("There are a total of " + members + " members in the discord, how many in each rank?");
-
-            await Context.Channel.SendMessageAsync("", false, embed);
-        }
     }
 }
