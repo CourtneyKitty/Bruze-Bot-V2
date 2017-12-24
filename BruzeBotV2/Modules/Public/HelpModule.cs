@@ -72,7 +72,15 @@ namespace BruzeBotV2.Modules.Public
             var embed = new EmbedBuilder() { Color = Colours.helpCol };
 
             embed.Title = ("Bruze MPG New Member Help");
-            embed.Description = (BotConfig.Load().Prefix + "settings - View the current server config settings");
+            embed.Description = (BotConfig.Load().Prefix + "settings - View the current server config settings" + "\n" +
+                                 BotConfig.Load().Prefix + "settings prefix <prefix> - Change the bot prefix" + "\n" +
+                                 BotConfig.Load().Prefix + "settings token <token> - Change the bot token (IMPORTANT! DO NOT DO THIS UNLESS REQUIRED)" + "\n" +
+                                 BotConfig.Load().Prefix + "settings newmember <rank> - Change the new user rank" + "\n" +
+                                 BotConfig.Load().Prefix + "settings userrank <rank> - Change the user rank" + "\n" +
+                                 BotConfig.Load().Prefix + "settings musicrank <rank> - Change the music rank" + "\n" +
+                                 BotConfig.Load().Prefix + "settings programmingrank <rank> - Change the programming rank" + "\n" +
+                                 BotConfig.Load().Prefix + "settings graphicsrank <rank> - Change the graphics rank" + "\n");
+
 
             await Context.Channel.SendMessageAsync("", false, embed);
         }
