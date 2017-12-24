@@ -19,7 +19,7 @@ namespace BruzeBotV2.Modules.Admin
         public async Task Settings()
         {
             string serverName = "Bruze MPG Community";
-            string token = "Classified";
+            string token = BotConfig.Load().Token;
             string prefix = BotConfig.Load().Prefix;
             string newUserRank = BotConfig.Load().NewMemberRank;
             string userRank = BotConfig.Load().UserRank;
