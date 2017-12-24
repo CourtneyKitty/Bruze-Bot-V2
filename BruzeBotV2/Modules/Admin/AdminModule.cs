@@ -75,6 +75,7 @@ namespace BruzeBotV2.Modules.Admin
                 config.MusicRank = BotConfig.Load().MusicRank;
                 config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
                 config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
                 config.Messages = BotConfig.Load().Messages;
                 config.Members = BotConfig.Load().Members;
                 config.Save();
@@ -102,6 +103,7 @@ namespace BruzeBotV2.Modules.Admin
                 config.MusicRank = BotConfig.Load().MusicRank;
                 config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
                 config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
                 config.Messages = BotConfig.Load().Messages;
                 config.Members = BotConfig.Load().Members;
                 config.Save();
@@ -129,6 +131,7 @@ namespace BruzeBotV2.Modules.Admin
                 config.MusicRank = BotConfig.Load().MusicRank;
                 config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
                 config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
                 config.Messages = BotConfig.Load().Messages;
                 config.Members = BotConfig.Load().Members;
                 config.Save();
@@ -156,6 +159,7 @@ namespace BruzeBotV2.Modules.Admin
                 config.MusicRank = rank;
                 config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
                 config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
                 config.Messages = BotConfig.Load().Messages;
                 config.Members = BotConfig.Load().Members;
                 config.Save();
@@ -183,6 +187,7 @@ namespace BruzeBotV2.Modules.Admin
                 config.MusicRank = BotConfig.Load().MusicRank;
                 config.ProgrammingRank = rank;
                 config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
                 config.Messages = BotConfig.Load().Messages;
                 config.Members = BotConfig.Load().Members;
                 config.Save();
@@ -210,6 +215,7 @@ namespace BruzeBotV2.Modules.Admin
                 config.MusicRank = BotConfig.Load().MusicRank;
                 config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
                 config.GraphicsRank = rank;
+                config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
                 config.Messages = BotConfig.Load().Messages;
                 config.Members = BotConfig.Load().Members;
                 config.Save();

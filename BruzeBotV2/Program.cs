@@ -90,8 +90,10 @@ namespace BruzeBotV2
                 config.ProgrammingRank = Console.ReadLine();
                 Console.WriteLine("Graphics Rank: ");
                 config.GraphicsRank = Console.ReadLine();
+                config.welcomeChannelId = 0;
                 config.Messages = 1;
                 config.Members = 1;
+                Console.WriteLine("You will have to enter the config file to manually set welcomeChannelId, Messages and Members. (configuration/config.json)");
                 config.Save();
             }
             if (!File.Exists(ranksLoc))
@@ -102,6 +104,7 @@ namespace BruzeBotV2
                 ranks.musicCount = 0;
                 ranks.programmingCount = 0;
                 ranks.graphicsCount = 0;
+                Console.WriteLine("You will have to enter the ranks save file to manually set the beginning statistics. (configuration/ranks.json)");
                 ranks.Save();
             }
             Console.WriteLine("Configuration has been loaded");

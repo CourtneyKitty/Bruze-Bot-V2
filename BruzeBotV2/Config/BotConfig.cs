@@ -11,6 +11,7 @@ namespace BruzeBotV2.Config
 
         public string Prefix { get; set; }
         public string Token { get; set; }
+        public ulong welcomeChannelId { get; set; }
         public string NewMemberRank { get; set; }
         public string UserRank { get; set; }
         public string MusicRank { get; set; }
@@ -22,6 +23,7 @@ namespace BruzeBotV2.Config
         {
             Prefix = "!";
             Token = "";
+            welcomeChannelId = 0;
             NewMemberRank = "";
             UserRank = "";
             MusicRank = "";

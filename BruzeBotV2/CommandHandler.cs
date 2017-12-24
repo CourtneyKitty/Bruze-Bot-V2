@@ -39,6 +39,7 @@ namespace BruzeBotV2
             config.MusicRank = BotConfig.Load().MusicRank;
             config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
             config.GraphicsRank = BotConfig.Load().GraphicsRank;
+            config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
             config.Messages = BotConfig.Load().Messages;
             config.Members = BotConfig.Load().Members - 1;
             config.Save();
@@ -62,6 +63,7 @@ namespace BruzeBotV2
             config.MusicRank = BotConfig.Load().MusicRank;
             config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
             config.GraphicsRank = BotConfig.Load().GraphicsRank;
+            config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
             config.Messages = BotConfig.Load().Messages;
             config.Members = BotConfig.Load().Members + 1;
             config.Save();
@@ -77,7 +79,16 @@ namespace BruzeBotV2
             var newMemberRank = BotConfig.Load().NewMemberRank;
             var role = user.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == newMemberRank);
             await (user as IGuildUser).AddRoleAsync(role);
+
+            var welcomeChannel = Context.Guild.GetChannelAsync(BotConfig.Load().welcomeChannelId);
+            if (welcomeChannel != null)
+            {
+                var message = await Context.Channel.SendMessageAsync("Hey " + Context.User.Mention + ", read the above post, read the rules and then head into #bot-commands and get your roles to enter the full discord!");
+                await Delete.DelayDeleteMessage(message, 60);
+            }
+            else await errors.sendErrorTemp(Context.Channel, "Welcome channel not found, make sure the config.json is set up correctly!", Colours.errorCol);
         }
+
 
         public async Task SetGame()
         {
@@ -100,6 +111,7 @@ namespace BruzeBotV2
                 config.MusicRank = BotConfig.Load().MusicRank;
                 config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
                 config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
                 config.Messages = BotConfig.Load().Messages;
                 config.Members = BotConfig.Load().Members;
                 config.Save();
@@ -129,6 +141,7 @@ namespace BruzeBotV2
             config.MusicRank = BotConfig.Load().MusicRank;
             config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
             config.GraphicsRank = BotConfig.Load().GraphicsRank;
+            config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
             config.Messages = BotConfig.Load().Messages + 1;
             config.Members = BotConfig.Load().Members;
             config.Save();
@@ -154,8 +167,7 @@ namespace BruzeBotV2
 
                 //If the command failed, notify the user
                 if (!result.IsSuccess && result.ErrorReason != "Unknown command.")
-
-                    await message.Channel.SendMessageAsync($"**Error:** {result.ErrorReason}");
+                    await errors.sendErrorTemp(pMsg.Channel, result.ErrorReason, Colours.errorCol);
             }
         }
     }
