@@ -227,5 +227,37 @@ namespace BruzeBotV2.Modules.Admin
             }
             else await errors.sendErrorTemp(Context.Channel, "You must specify a rank!", Colours.errorCol);
         }
+
+        /** Sub Rank Stuff **/
+        [Command("create subrank")]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        public async Task CreateSubRank(string title = null)
+        {
+            if (title != null)
+            {
+                // Creating object and pushing to file
+                if (SubRanksSaves.Load().MaxRanks > SubRanksSaves.Load().SubRanks)
+                {
+                    SubRanksSaves SubRanks = new SubRanksSaves();
+                    SubRanks.MaxRanks = SubRanksSaves.Load().MaxRanks;
+                    SubRanks.Ranks[SubRanksSaves.Load().SubRanks - 1] = title;
+                    SubRanks.SubRanks = SubRanksSaves.Load().SubRanks + 1;
+                    SubRanks.Save();
+
+                    // Create Role
+
+                }
+                else await errors.sendErrorTemp(Context.Channel, "You have used up all sub ranks!", Colours.errorCol);
+                
+                // Success Message
+                var embed = new EmbedBuilder() { Color = Colours.adminCol };
+                embed.Title = "Create Sub Rank";
+                embed.Description = "The sub rank " + title + " was created successfully!";
+                await Context.Channel.SendMessageAsync("", false, embed);
+            }
+            else await errors.sendErrorTemp(Context.Channel, "You need to specify the rank title.", Colours.errorCol);
+        }
+
+
     }
 }

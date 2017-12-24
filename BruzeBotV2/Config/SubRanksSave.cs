@@ -10,13 +10,15 @@ namespace BruzeBotV2.Config
         [JsonIgnore]
         public static readonly string appdir = AppContext.BaseDirectory;
 
+        public int MaxRanks { get; set; } // Max amoint of sub ranks
         public int SubRanks { get; set; } // Count of sub ranks
-        public SubRank[] Ranks { get; set; } // Array of ranks
+        public string[] Ranks { get; set; } // Array of ranks
 
         public SubRanksSaves()
         {
-            SubRanks = 0;
-            Ranks = new SubRank[SubRanks];
+            MaxRanks = 20;
+            SubRanks = 1;
+            Ranks = new string[MaxRanks];
         }
 
         public void Save(string dir = "configuration/sub_ranks.json")

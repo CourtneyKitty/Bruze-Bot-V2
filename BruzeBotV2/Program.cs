@@ -116,6 +116,7 @@ namespace BruzeBotV2
             if (!File.Exists(subRanksLoc))
             {
                 var subRanks = new SubRanksSaves();
+                subRanks.MaxRanks = 20;
                 subRanks.SubRanks = 1;
                 Console.WriteLine("You will have to enter the sub ranks save file to manually set the beginning statistics. (configuration/sub_ranks.json)");
                 subRanks.Save();
