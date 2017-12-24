@@ -89,7 +89,8 @@ namespace BruzeBotV2
                 config.ProgrammingRank = Console.ReadLine();
                 Console.WriteLine("Graphics Rank: ");
                 config.GraphicsRank = Console.ReadLine();
-                config.Messages = 0;
+                config.Messages = 1;
+                config.Members = 1;
                 config.Save();                                 
             }
             Console.WriteLine("Configuration has been loaded");

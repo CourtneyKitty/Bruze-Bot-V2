@@ -29,10 +29,34 @@ namespace BruzeBotV2
             bot.MessageReceived += messageCount;
         }
 
-        public async Task AnnounceLeftUser(SocketGuildUser user) { }
+        public async Task AnnounceLeftUser(SocketGuildUser user) {
+            BotConfig config = new BotConfig();
+            config.Prefix = BotConfig.Load().Prefix;
+            config.Token = BotConfig.Load().Token;
+            config.NewMemberRank = BotConfig.Load().NewMemberRank;
+            config.UserRank = BotConfig.Load().UserRank;
+            config.MusicRank = BotConfig.Load().MusicRank;
+            config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
+            config.GraphicsRank = BotConfig.Load().GraphicsRank;
+            config.Messages = BotConfig.Load().Messages;
+            config.Members = BotConfig.Load().Members - 1;
+            config.Save();
+        }
 
         public async Task AnnounceUserJoined(SocketGuildUser user)
         {
+            BotConfig config = new BotConfig();
+            config.Prefix = BotConfig.Load().Prefix;
+            config.Token = BotConfig.Load().Token;
+            config.NewMemberRank = BotConfig.Load().NewMemberRank;
+            config.UserRank = BotConfig.Load().UserRank;
+            config.MusicRank = BotConfig.Load().MusicRank;
+            config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
+            config.GraphicsRank = BotConfig.Load().GraphicsRank;
+            config.Messages = BotConfig.Load().Messages;
+            config.Members = BotConfig.Load().Members + 1;
+            config.Save();
+
             var newMemberRank = BotConfig.Load().NewMemberRank;
             var role = user.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == newMemberRank);
             await (user as IGuildUser).AddRoleAsync(role);
@@ -51,7 +75,15 @@ namespace BruzeBotV2
         public async Task messageCount(SocketMessage msg)
         {
             BotConfig config = new BotConfig();
+            config.Prefix = BotConfig.Load().Prefix;
+            config.Token = BotConfig.Load().Token;
+            config.NewMemberRank = BotConfig.Load().NewMemberRank;
+            config.UserRank = BotConfig.Load().UserRank;
+            config.MusicRank = BotConfig.Load().MusicRank;
+            config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
+            config.GraphicsRank = BotConfig.Load().GraphicsRank;
             config.Messages = BotConfig.Load().Messages + 1;
+            config.Members = BotConfig.Load().Members;
             config.Save();
         }
 

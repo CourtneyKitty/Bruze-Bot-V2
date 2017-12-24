@@ -38,5 +38,18 @@ namespace BruzeBotV2.Modules.Public
 
             await Context.Channel.SendMessageAsync("", false, embed);
         }
+
+        [Command("members count")]
+        public async Task membersCount()
+        {
+            var members = BotConfig.Load().Members;
+
+            var embed = new EmbedBuilder() { Color = Colours.generalCol };
+
+            embed.Title = ("Members Count");
+            embed.Description = ("There are " + members + " members in the discord!");
+
+            await Context.Channel.SendMessageAsync("", false, embed);
+        }
     }
 }
