@@ -8,7 +8,8 @@ namespace BruzeBotV2.Config
     {
         [JsonIgnore]
         public static readonly string appdir = AppContext.BaseDirectory;
-        
+
+        public int newMembersCount { get; set; }
         public int userCount { get; set; }
         public int musicCount { get; set; }
         public int programmingCount { get; set; }
@@ -16,6 +17,7 @@ namespace BruzeBotV2.Config
 
         public RankSaves()
         {
+            newMembersCount = 0;
             userCount = 0;
             musicCount = 0;
             programmingCount = 0;

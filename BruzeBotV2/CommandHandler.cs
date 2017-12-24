@@ -41,6 +41,14 @@ namespace BruzeBotV2
             config.Messages = BotConfig.Load().Messages;
             config.Members = BotConfig.Load().Members - 1;
             config.Save();
+
+            var ranks = new RankSaves();
+            ranks.newMembersCount = RankSaves.Load().newMembersCount - 1;
+            ranks.userCount = RankSaves.Load().userCount;
+            ranks.musicCount = RankSaves.Load().musicCount;
+            ranks.programmingCount = RankSaves.Load().programmingCount;
+            ranks.graphicsCount = RankSaves.Load().graphicsCount;
+            ranks.Save();
         }
 
         public async Task AnnounceUserJoined(SocketGuildUser user)
@@ -56,6 +64,14 @@ namespace BruzeBotV2
             config.Messages = BotConfig.Load().Messages;
             config.Members = BotConfig.Load().Members + 1;
             config.Save();
+
+            var ranks = new RankSaves();
+            ranks.newMembersCount = RankSaves.Load().newMembersCount + 1;
+            ranks.userCount = RankSaves.Load().userCount;
+            ranks.musicCount = RankSaves.Load().musicCount;
+            ranks.programmingCount = RankSaves.Load().programmingCount;
+            ranks.graphicsCount = RankSaves.Load().graphicsCount;
+            ranks.Save();
 
             var newMemberRank = BotConfig.Load().NewMemberRank;
             var role = user.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == newMemberRank);

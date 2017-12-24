@@ -97,6 +97,7 @@ namespace BruzeBotV2
             if (!File.Exists(ranksLoc))
             {
                 var ranks = new RankSaves();
+                ranks.newMembersCount = 0;
                 ranks.userCount = 0;
                 ranks.musicCount = 0;
                 ranks.programmingCount = 0;
