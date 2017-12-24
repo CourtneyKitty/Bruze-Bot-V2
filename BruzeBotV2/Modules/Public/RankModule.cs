@@ -28,6 +28,13 @@ namespace BruzeBotV2.Modules.Public
                 var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().UserRank);
                 await (user as IGuildUser).AddRoleAsync(role);
 
+                var ranks = new RankSaves();
+                ranks.userCount = RankSaves.Load().userCount + 1;
+                ranks.musicCount = RankSaves.Load().musicCount;
+                ranks.programmingCount = RankSaves.Load().programmingCount;
+                ranks.graphicsCount = RankSaves.Load().graphicsCount;
+                ranks.Save();
+
                 if (userName.Roles.Contains(newMemberRole))
                 {
                     var remrole = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().NewMemberRank);
@@ -42,10 +49,16 @@ namespace BruzeBotV2.Modules.Public
             else if (rank.ToLower().Equals("music"))
             {
                 var user = Context.User;
-
                 var config = new BotConfig();
                 var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().MusicRank);
                 await (user as IGuildUser).AddRoleAsync(role);
+
+                var ranks = new RankSaves();
+                ranks.userCount = RankSaves.Load().userCount;
+                ranks.musicCount = RankSaves.Load().musicCount + 1;
+                ranks.programmingCount = RankSaves.Load().programmingCount;
+                ranks.graphicsCount = RankSaves.Load().graphicsCount;
+                ranks.Save();
 
                 if (userName.Roles.Contains(newMemberRole))
                 {
@@ -65,6 +78,13 @@ namespace BruzeBotV2.Modules.Public
                 var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().ProgrammingRank);
                 await (user as IGuildUser).AddRoleAsync(role);
 
+                var ranks = new RankSaves();
+                ranks.userCount = RankSaves.Load().userCount;
+                ranks.musicCount = RankSaves.Load().musicCount;
+                ranks.programmingCount = RankSaves.Load().programmingCount + 1;
+                ranks.graphicsCount = RankSaves.Load().graphicsCount;
+                ranks.Save();
+
                 if (userName.Roles.Contains(newMemberRole))
                 {
                     var remrole = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().NewMemberRank);
@@ -82,6 +102,13 @@ namespace BruzeBotV2.Modules.Public
                 var config = new BotConfig();
                 var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().GraphicsRank);
                 await (user as IGuildUser).AddRoleAsync(role);
+
+                var ranks = new RankSaves();
+                ranks.userCount = RankSaves.Load().userCount;
+                ranks.musicCount = RankSaves.Load().musicCount;
+                ranks.programmingCount = RankSaves.Load().programmingCount;
+                ranks.graphicsCount = RankSaves.Load().graphicsCount + 1;
+                ranks.Save();
 
                 if (userName.Roles.Contains(newMemberRole))
                 {
@@ -113,6 +140,13 @@ namespace BruzeBotV2.Modules.Public
                 var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().UserRank);
                 await (user as IGuildUser).RemoveRoleAsync(role);
 
+                var ranks = new RankSaves();
+                ranks.userCount = RankSaves.Load().userCount - 1;
+                ranks.musicCount = RankSaves.Load().musicCount;
+                ranks.programmingCount = RankSaves.Load().programmingCount;
+                ranks.graphicsCount = RankSaves.Load().graphicsCount;
+                ranks.Save();
+
                 var message = await ReplyAsync("@" + Context.User.Id + " you was removed from the " + rank.ToLower() + " rank successfully!");
                 await Context.Message.DeleteAsync();
             }
@@ -120,6 +154,13 @@ namespace BruzeBotV2.Modules.Public
             {
                 var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().MusicRank);
                 await (user as IGuildUser).RemoveRoleAsync(role);
+
+                var ranks = new RankSaves();
+                ranks.userCount = RankSaves.Load().userCount;
+                ranks.musicCount = RankSaves.Load().musicCount - 1;
+                ranks.programmingCount = RankSaves.Load().programmingCount;
+                ranks.graphicsCount = RankSaves.Load().graphicsCount;
+                ranks.Save();
 
                 var message = await ReplyAsync("@" + Context.User.Id + " you was removed from the " + rank.ToLower() + " rank successfully!");
                 await Context.Message.DeleteAsync();
@@ -129,6 +170,13 @@ namespace BruzeBotV2.Modules.Public
                 var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().ProgrammingRank);
                 await (user as IGuildUser).RemoveRoleAsync(role);
 
+                var ranks = new RankSaves();
+                ranks.userCount = RankSaves.Load().userCount;
+                ranks.musicCount = RankSaves.Load().musicCount;
+                ranks.programmingCount = RankSaves.Load().programmingCount - 1;
+                ranks.graphicsCount = RankSaves.Load().graphicsCount;
+                ranks.Save();
+
                 var message = await ReplyAsync("@" + Context.User.Id + " you was removed from the " + rank.ToLower() + " rank successfully!");
                 await Context.Message.DeleteAsync();
             }
@@ -136,6 +184,13 @@ namespace BruzeBotV2.Modules.Public
             {
                 var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().GraphicsRank);
                 await (user as IGuildUser).RemoveRoleAsync(role);
+
+                var ranks = new RankSaves();
+                ranks.userCount = RankSaves.Load().userCount;
+                ranks.musicCount = RankSaves.Load().musicCount;
+                ranks.programmingCount = RankSaves.Load().programmingCount;
+                ranks.graphicsCount = RankSaves.Load().graphicsCount - 1;
+                ranks.Save();
 
                 var message = await ReplyAsync("@" + Context.User.Id + " you was removed from the " + rank.ToLower() + " rank successfully!");
                 await Context.Message.DeleteAsync();

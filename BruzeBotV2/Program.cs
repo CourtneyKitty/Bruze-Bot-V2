@@ -68,9 +68,10 @@ namespace BruzeBotV2
             if (!Directory.Exists(Path.Combine(AppContext.BaseDirectory, "configuration")))
                 Directory.CreateDirectory(Path.Combine(AppContext.BaseDirectory, "configuration"));
 
-            string loc = Path.Combine(AppContext.BaseDirectory, "configuration/config.json");
+            string configLoc = Path.Combine(AppContext.BaseDirectory, "configuration/config.json");
+            string ranksLoc = Path.Combine(AppContext.BaseDirectory, "configuration/ranks.json");
 
-            if (!File.Exists(loc))                              // Check if the configuration file exists.
+            if (!File.Exists(configLoc))                              // Check if the configuration file exists.
             {
                 var config = new BotConfig();               // Create a new configuration object.
 
@@ -91,7 +92,16 @@ namespace BruzeBotV2
                 config.GraphicsRank = Console.ReadLine();
                 config.Messages = 1;
                 config.Members = 1;
-                config.Save();                                 
+                config.Save();
+            }
+            if (!File.Exists(ranksLoc))
+            {
+                var ranks = new RankSaves();
+                ranks.userCount = 0;
+                ranks.musicCount = 0;
+                ranks.programmingCount = 0;
+                ranks.graphicsCount = 0;
+                ranks.Save();
             }
             Console.WriteLine("Configuration has been loaded");
         }
