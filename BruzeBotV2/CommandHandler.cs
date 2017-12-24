@@ -26,6 +26,7 @@ namespace BruzeBotV2
             //Send user message to get handled
             bot.MessageReceived += HandleCommand;
             commands = map.GetService<CommandService>();
+            bot.MessageReceived += messageCount;
         }
 
         public async Task AnnounceLeftUser(SocketGuildUser user) { }
@@ -45,6 +46,13 @@ namespace BruzeBotV2
         public async Task ConfigureAsync()
         {
             await commands.AddModulesAsync(Assembly.GetEntryAssembly());
+        }
+
+        public async Task messageCount(SocketMessage msg)
+        {
+            BotConfig config = new BotConfig();
+            config.Messages = BotConfig.Load().Messages + 1;
+            config.Save();
         }
 
         public async Task HandleCommand(SocketMessage pMsg)

@@ -51,7 +51,9 @@ namespace BruzeBotV2.Modules.Public
             var embed = new EmbedBuilder() { Color = Colours.helpCol };
 
             embed.Title = ("Bruze MPG General Help");
-            embed.Description = (BotConfig.Load().Prefix + "help - I think you know this command" + "\n" +
+            embed.Description = (BotConfig.Load().Prefix + "ping - I like ping pong" + "\n" +
+                                    BotConfig.Load().Prefix + "message count - Shows how many messages have been sent in this discord!" + "\n" +
+                                    BotConfig.Load().Prefix + "help - I think you know this command" + "\n" +
                                     BotConfig.Load().Prefix + "rank add <user|music|programming|graphics> - Used to set your rank" + "\n" +
                                     BotConfig.Load().Prefix + "rank remove <user|music|programming|graphics> - Used to remove the rank");
 

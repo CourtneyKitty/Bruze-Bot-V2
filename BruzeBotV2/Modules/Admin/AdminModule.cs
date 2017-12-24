@@ -75,6 +75,7 @@ namespace BruzeBotV2.Modules.Admin
                 config.MusicRank = BotConfig.Load().MusicRank;
                 config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
                 config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.Messages = BotConfig.Load().Messages;
                 config.Save();
 
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
@@ -100,6 +101,7 @@ namespace BruzeBotV2.Modules.Admin
                 config.MusicRank = BotConfig.Load().MusicRank;
                 config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
                 config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.Messages = BotConfig.Load().Messages;
                 config.Save();
 
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
@@ -125,6 +127,7 @@ namespace BruzeBotV2.Modules.Admin
                 config.MusicRank = BotConfig.Load().MusicRank;
                 config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
                 config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.Messages = BotConfig.Load().Messages;
                 config.Save();
 
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
@@ -150,6 +153,7 @@ namespace BruzeBotV2.Modules.Admin
                 config.MusicRank = BotConfig.Load().MusicRank;
                 config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
                 config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.Messages = BotConfig.Load().Messages;
                 config.Save();
 
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
@@ -175,6 +179,7 @@ namespace BruzeBotV2.Modules.Admin
                 config.MusicRank = rank;
                 config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
                 config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.Messages = BotConfig.Load().Messages;
                 config.Save();
 
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
@@ -200,6 +205,7 @@ namespace BruzeBotV2.Modules.Admin
                 config.MusicRank = BotConfig.Load().MusicRank;
                 config.ProgrammingRank = rank;
                 config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.Messages = BotConfig.Load().Messages;
                 config.Save();
 
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
@@ -225,6 +231,7 @@ namespace BruzeBotV2.Modules.Admin
                 config.MusicRank = BotConfig.Load().MusicRank;
                 config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
                 config.GraphicsRank = rank;
+                config.Messages = BotConfig.Load().Messages;
                 config.Save();
 
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };

@@ -16,6 +16,7 @@ namespace BruzeBotV2.Config
         public string MusicRank { get; set; }
         public string ProgrammingRank { get; set; }
         public string GraphicsRank { get; set; }
+        public int Messages { get; set; }
         public BotConfig()
         {
             Prefix = "!";
@@ -25,6 +26,7 @@ namespace BruzeBotV2.Config
             MusicRank = "";
             ProgrammingRank = "";
             GraphicsRank = "";
+            Messages = 1;
         }
 
         public void Save(string dir = "configuration/config.json")
