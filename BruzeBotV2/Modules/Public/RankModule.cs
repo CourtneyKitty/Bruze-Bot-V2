@@ -222,11 +222,11 @@ namespace BruzeBotV2.Modules.Public
             var newbs = RankSaves.Load().newMembersCount;
 
             var embed = new EmbedBuilder() { Color = Colours.generalCol };
-            var usersField = new EmbedFieldBuilder() { Name = BotConfig.Load().UserRank + ":", Value = users };
-            var musicField = new EmbedFieldBuilder() { Name = BotConfig.Load().MusicRank + ":", Value = music };
-            var programmingField = new EmbedFieldBuilder() { Name = BotConfig.Load().ProgrammingRank + ":", Value = programming };
-            var graphicsField = new EmbedFieldBuilder() { Name = BotConfig.Load().GraphicsRank + ":", Value = graphics };
-            var newbsField = new EmbedFieldBuilder() { Name = "New", Value = "That leaves " + newbs + " not in any rank yet!" };
+            var usersField = new EmbedFieldBuilder() { Name = BotConfig.Load().UserRank.ToString() + ":", Value = users };
+            var musicField = new EmbedFieldBuilder() { Name = BotConfig.Load().MusicRank.ToString() + ":", Value = music };
+            var programmingField = new EmbedFieldBuilder() { Name = BotConfig.Load().ProgrammingRank.ToString() + ":", Value = programming };
+            var graphicsField = new EmbedFieldBuilder() { Name = BotConfig.Load().GraphicsRank.ToString() + ":", Value = graphics };
+            var newbsField = new EmbedFieldBuilder() { Name = "New", Value = "That leaves " + newbs.ToString() + " not in any rank yet!" };
 
             var footer = new EmbedFooterBuilder() { Text = "Requested by " + Context.User.Username };
 

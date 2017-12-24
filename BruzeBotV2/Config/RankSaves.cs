@@ -35,8 +35,8 @@ namespace BruzeBotV2.Config
         {
             Console.WriteLine("Attempting to load " + dir);
             string file = Path.Combine(appdir, dir);
-            return JsonConvert.DeserializeObject<RankSaves>(File.ReadAllText(file));
             Console.WriteLine("Successfully loaded " + dir);
+            return JsonConvert.DeserializeObject<RankSaves>(File.ReadAllText(file));
         }
         public string ToJson()
             => JsonConvert.SerializeObject(this, Formatting.Indented);
