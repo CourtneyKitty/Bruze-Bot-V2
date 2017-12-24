@@ -79,6 +79,8 @@ namespace BruzeBotV2.Modules.Admin
                 config.Members = BotConfig.Load().Members;
                 config.Save();
 
+                await bot.SetGameAsync(BotConfig.Load().Prefix + "help");
+
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
                 embed.Title = ("Settings Prefix");
                 embed.Description = ("Prefix has been set to " + prefix + " successfully!");

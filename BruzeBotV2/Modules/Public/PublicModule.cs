@@ -26,6 +26,20 @@ namespace BruzeBotV2.Modules.Public
             await Context.Channel.SendMessageAsync("", false, embed);
         }
 
+        [Command("bot info")]
+        public async Task botInfo()
+        {
+            var embed = new EmbedBuilder() { Color = Colours.generalCol };
+
+            embed.Title = ("Bot Info");
+            embed.Description = ("Name: " + References.TITLE + "\n" +
+                                    "Version: " + References.ID + "\n" +
+                                    "Developer: " + References.DEV + "\n" +
+                                    "Developer Website: " + References.DEVWEB);
+
+            await Context.Channel.SendMessageAsync("", false, embed);
+        }
+
         [Command("messages count")]
         public async Task messagesCount()
         {

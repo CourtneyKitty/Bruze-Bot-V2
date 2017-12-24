@@ -52,6 +52,7 @@ namespace BruzeBotV2.Modules.Public
 
             embed.Title = ("Bruze MPG General Help");
             embed.Description = (BotConfig.Load().Prefix + "ping - I like ping pong" + "\n" +
+                                    BotConfig.Load().Prefix + "bot info - Displays information about me!" + "\n" +
                                     BotConfig.Load().Prefix + "messages count - Shows how many messages have been sent in this discord!" + "\n" +
                                     BotConfig.Load().Prefix + "members count - Shows how many members are in this discord!" + "\n" +
                                     BotConfig.Load().Prefix + "ranks - Shows how many members are in each rank" + "\n" +

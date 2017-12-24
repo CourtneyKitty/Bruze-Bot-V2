@@ -80,7 +80,7 @@ namespace BruzeBotV2
 
         public async Task SetGame()
         {
-            await bot.SetGameAsync("!help");
+            await bot.SetGameAsync(BotConfig.Load().Prefix + "help");
         }
 
         public async Task ConfigureAsync()
