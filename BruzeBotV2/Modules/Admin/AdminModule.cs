@@ -234,26 +234,31 @@ namespace BruzeBotV2.Modules.Admin
         public async Task CreateSubRank(string title = null)
         {
             if (title != null)
-            {
-                // Creating object and pushing to file
+            { 
                 if (SubRanksSaves.Load().MaxRanks > SubRanksSaves.Load().SubRanks)
                 {
+                    // Creating object and pushing to file
                     SubRanksSaves SubRanks = new SubRanksSaves();
                     SubRanks.MaxRanks = SubRanksSaves.Load().MaxRanks;
+                    for (int i = 0; i < SubRanksSaves.Load().MaxRanks; i++)
+                    {
+                        SubRanks.Ranks[i] = SubRanksSaves.Load().Ranks[i];
+                    }
                     SubRanks.Ranks[SubRanksSaves.Load().SubRanks - 1] = title;
                     SubRanks.SubRanks = SubRanksSaves.Load().SubRanks + 1;
                     SubRanks.Save();
 
                     // Create Role
+                    var perms = new GuildPermissions(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+                    await Context.Guild.CreateRoleAsync(title, perms, null, false, null);
 
+                    // Success Message
+                    var embed = new EmbedBuilder() { Color = Colours.adminCol };
+                    embed.Title = "Create Sub Rank";
+                    embed.Description = "The sub rank " + title + " was created successfully!";
+                    await Context.Channel.SendMessageAsync("", false, embed);
                 }
                 else await errors.sendErrorTemp(Context.Channel, "You have used up all sub ranks!", Colours.errorCol);
-                
-                // Success Message
-                var embed = new EmbedBuilder() { Color = Colours.adminCol };
-                embed.Title = "Create Sub Rank";
-                embed.Description = "The sub rank " + title + " was created successfully!";
-                await Context.Channel.SendMessageAsync("", false, embed);
             }
             else await errors.sendErrorTemp(Context.Channel, "You need to specify the rank title.", Colours.errorCol);
         }
