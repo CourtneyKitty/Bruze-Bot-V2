@@ -26,8 +26,8 @@ namespace BruzeBotV2.Modules.Public
             await Context.Channel.SendMessageAsync("", false, embed);
         }
 
-        [Command("message count")]
-        public async Task messageCount()
+        [Command("messages count")]
+        public async Task messagesCount()
         {
             var messages = BotConfig.Load().Messages;
 
