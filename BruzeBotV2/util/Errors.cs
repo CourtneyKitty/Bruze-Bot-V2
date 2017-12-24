@@ -2,8 +2,6 @@
 using Discord.WebSocket;
 using Discord.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BruzeBotV2.util
@@ -46,7 +44,7 @@ namespace BruzeBotV2.util
             var errorMessage = await channel.SendMessageAsync("", false, embed);
             Console.WriteLine("Error message was sent to the user.");
 
-            await Delete.DelayDeleteError(errorMessage, 10);
+            await Delete.DelayDeleteEmbed(errorMessage, 30);
             Console.WriteLine("The error message that was sent to the user is now deleted.");
         }
 
@@ -60,7 +58,7 @@ namespace BruzeBotV2.util
             var errorMessage = await channel.SendMessageAsync("", false, embed);
             Console.WriteLine("Error message was sent to the user.");
 
-            await Delete.DelayDeleteError(errorMessage, 10);
+            await Delete.DelayDeleteEmbed(errorMessage, 30);
             Console.WriteLine("The error message that was sent to the user is now deleted.");
         }
     }

@@ -11,6 +11,7 @@ namespace BruzeBotV2.Modules.Public
     public class RankModule : ModuleBase
     {
         Errors errors = new Errors();
+        Success success = new Success();
 
         [Command("rank add")]
         [Remarks("Assigns the rank to the user.")]
@@ -45,10 +46,7 @@ namespace BruzeBotV2.Modules.Public
 
                 ranks.Save();
 
-                var message = await ReplyAsync("@" + Context.User.Id + " you were given the user rank successfully!");
-                //await Delete.DelayDeleteMessage(message, 10);
-
-                await Context.Message.DeleteAsync();
+                await success.sendSuccessTemp(Context.Channel, "Add Rank", "@" + Context.User.Id + " you was added to the '" + rank.ToLower() + "' sub rank successfully!", Colours.generalCol);
             }
             else if (rank.ToLower().Equals("music"))
             {
@@ -73,9 +71,7 @@ namespace BruzeBotV2.Modules.Public
 
                 ranks.Save();
 
-                var message = await ReplyAsync("@" + Context.User.Id + " you were given the music rank successfully!");
-
-                await Context.Message.DeleteAsync();
+                await success.sendSuccessTemp(Context.Channel, "Add Rank", "@" + Context.User.Id + " you was added to the '" + rank.ToLower() + "' sub rank successfully!", Colours.generalCol);
             }
             else if (rank.ToLower().Equals("programming"))
             {
@@ -101,9 +97,7 @@ namespace BruzeBotV2.Modules.Public
 
                 ranks.Save();
 
-                var message = await ReplyAsync("@" + Context.User.Id + " you were given the programming rank successfully!");
-
-                await Context.Message.DeleteAsync();
+                await success.sendSuccessTemp(Context.Channel, "Add Rank", "@" + Context.User.Id + " you was added to the '" + rank.ToLower() + "' sub rank successfully!", Colours.generalCol);
             }
             else if (rank.ToLower().Equals("graphics"))
             {
@@ -129,9 +123,7 @@ namespace BruzeBotV2.Modules.Public
 
                 ranks.Save();
 
-                var message = await ReplyAsync("@" + Context.User.Id + " you were given the graphics rank successfully!");
-
-                await Context.Message.DeleteAsync();
+                await success.sendSuccessTemp(Context.Channel, "Add Rank", "@" + Context.User.Id + " you was added to the '" + rank.ToLower() + "' sub rank successfully!", Colours.generalCol);
             }
             else
             {
@@ -160,8 +152,7 @@ namespace BruzeBotV2.Modules.Public
                 ranks.graphicsCount = RankSaves.Load().graphicsCount;
                 ranks.Save();
 
-                var message = await ReplyAsync("@" + Context.User.Id + " you was removed from the " + rank.ToLower() + " rank successfully!");
-                await Context.Message.DeleteAsync();
+                await success.sendSuccessTemp(Context.Channel, "Remove Rank", "@" + Context.User.Id + " you was removed from the '" + rank.ToLower() + "' sub rank successfully!", Colours.generalCol);
             }
             else if (rank.ToLower().Equals("music"))
             {
@@ -175,8 +166,7 @@ namespace BruzeBotV2.Modules.Public
                 ranks.graphicsCount = RankSaves.Load().graphicsCount;
                 ranks.Save();
 
-                var message = await ReplyAsync("@" + Context.User.Id + " you was removed from the " + rank.ToLower() + " rank successfully!");
-                await Context.Message.DeleteAsync();
+                await success.sendSuccessTemp(Context.Channel, "Remove Rank", "@" + Context.User.Id + " you was removed from the '" + rank.ToLower() + "' sub rank successfully!", Colours.generalCol);
             }
             else if (rank.ToLower().Equals("programming"))
             {
@@ -190,8 +180,7 @@ namespace BruzeBotV2.Modules.Public
                 ranks.graphicsCount = RankSaves.Load().graphicsCount;
                 ranks.Save();
 
-                var message = await ReplyAsync("@" + Context.User.Id + " you was removed from the " + rank.ToLower() + " rank successfully!");
-                await Context.Message.DeleteAsync();
+                await success.sendSuccessTemp(Context.Channel, "Remove Rank", "@" + Context.User.Id + " you was removed from the '" + rank.ToLower() + "' sub rank successfully!", Colours.generalCol);
             }
             else if (rank.ToLower().Equals("graphics"))
             {
@@ -204,9 +193,8 @@ namespace BruzeBotV2.Modules.Public
                 ranks.programmingCount = RankSaves.Load().programmingCount;
                 ranks.graphicsCount = RankSaves.Load().graphicsCount - 1;
                 ranks.Save();
-
-                var message = await ReplyAsync("@" + Context.User.Id + " you was removed from the " + rank.ToLower() + " rank successfully!");
-                await Context.Message.DeleteAsync();
+                
+                await success.sendSuccessTemp(Context.Channel, "Remove Rank", "@" + Context.User.Id + " you was removed from the '" + rank.ToLower() + "' sub rank successfully!", Colours.generalCol);
             }
             else await errors.sendErrorTemp(chan, "Parameter not recognised. Parameters are as follows user, music, programming or graphics", Colours.errorCol);
         }
@@ -241,6 +229,42 @@ namespace BruzeBotV2.Modules.Public
             embed.WithCurrentTimestamp();
 
             await Context.Channel.SendMessageAsync("", false, embed);
+        }
+
+        /** Sub Ranks **/
+
+        [Command("subrank add")]
+        public async Task AddSubRank([Remainder] string rank = null)
+        {
+            if (rank != null)
+            {
+                var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == rank);
+
+                if (role != null)
+                {
+                    await (Context.User as IGuildUser).AddRoleAsync(role);
+                    await success.sendSuccessTemp(Context.Channel, "Add Sub Rank", "@" + Context.User.Id + " you was added to the '" + rank.ToLower() + "' sub rank successfully!", Colours.generalCol);
+                }
+                else await errors.sendErrorTemp(Context.Channel, "You must enter a valid rank! I am case sensitive!", Colours.errorCol);
+            }
+            else await errors.sendErrorTemp(Context.Channel, "Please enter a sub rank.", Colours.errorCol);
+        }
+
+        [Command("subrank remove")]
+        public async Task RemoveSubRank([Remainder] string rank = null)
+        {
+            if (rank != null)
+            {
+                var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == rank);
+
+                if (role != null)
+                {
+                    await (Context.User as IGuildUser).RemoveRoleAsync(role);
+                    await success.sendSuccessTemp(Context.Channel, "Remove Sub Rank", "@" + Context.User.Id + " you was removed from the '" + rank.ToLower() + "' sub rank successfully!", Colours.generalCol);
+                }
+                else await errors.sendErrorTemp(Context.Channel, "You must enter a valid rank! I am case sensitive!", Colours.errorCol);
+            }
+            else await errors.sendErrorTemp(Context.Channel, "Please enter a sub rank.", Colours.errorCol);
         }
     }
 }
