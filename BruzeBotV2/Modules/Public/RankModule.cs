@@ -266,5 +266,28 @@ namespace BruzeBotV2.Modules.Public
             }
             else await errors.sendErrorTemp(Context.Channel, "Please enter a sub rank.", Colours.errorCol);
         }
+
+        [Command("subranks")]
+        public async Task SubRanks()
+        {
+            var embed = new EmbedBuilder() { Color = Colours.helpCol };
+
+            embed.Title = ("Sub Ranks");
+            string desc = "Type " + BotConfig.Load().Prefix + "subrank add <rank> to be added to the sub ranks!";
+
+            if (SubRanksSaves.Load().SubRanks > 1)
+            {
+                for (int i = 0; i < SubRanksSaves.Load().SubRanks; i++)
+                {
+                    desc = desc + "\n";
+                    desc = desc + SubRanksSaves.Load().Ranks[i];
+                }
+            }
+            else desc = desc + "\n- Sub Ranks are to be added soon!";
+
+            embed.Description = (desc);
+
+            await Context.Channel.SendMessageAsync("", false, embed);
+        }
     }
 }
