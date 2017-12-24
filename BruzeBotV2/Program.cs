@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using BruzeBotV2.Config;
 using System.IO;
 using System.Collections.Generic;
+using BruzeBotV2.util;
 
 namespace BruzeBotV2
 {
@@ -70,10 +71,11 @@ namespace BruzeBotV2
 
             string configLoc = Path.Combine(AppContext.BaseDirectory, "configuration/config.json");
             string ranksLoc = Path.Combine(AppContext.BaseDirectory, "configuration/ranks.json");
+            string subRanksLoc = Path.Combine(AppContext.BaseDirectory, "configuration/sub_ranks.json");
 
-            if (!File.Exists(configLoc))                              // Check if the configuration file exists.
+            if (!File.Exists(configLoc))
             {
-                var config = new BotConfig();               // Create a new configuration object.
+                var config = new BotConfig();
 
                 Console.WriteLine("Please enter the following information to save into your configuration/config.json file");
                 Console.Write("Bot Token: ");
@@ -96,6 +98,8 @@ namespace BruzeBotV2
                 Console.WriteLine("You will have to enter the config file to manually set welcomeChannelId, Messages and Members. (configuration/config.json)");
                 config.Save();
             }
+            Console.WriteLine("Configuration has been loaded");
+
             if (!File.Exists(ranksLoc))
             {
                 var ranks = new RankSaves();
@@ -107,7 +111,16 @@ namespace BruzeBotV2
                 Console.WriteLine("You will have to enter the ranks save file to manually set the beginning statistics. (configuration/ranks.json)");
                 ranks.Save();
             }
-            Console.WriteLine("Configuration has been loaded");
+            Console.WriteLine("Ranks have been loaded");
+
+            if (!File.Exists(subRanksLoc))
+            {
+                var subRanks = new SubRanksSaves();
+                subRanks.SubRanks = 1;
+                Console.WriteLine("You will have to enter the sub ranks save file to manually set the beginning statistics. (configuration/sub_ranks.json)");
+                subRanks.Save();
+            }
+            Console.WriteLine("Sub ranks have been loaded");
         }
         public IServiceProvider ConfigureServices()
         {
