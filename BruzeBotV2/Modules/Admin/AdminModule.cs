@@ -159,5 +159,80 @@ namespace BruzeBotV2.Modules.Admin
             }
             else await errors.sendErrorTemp(Context.Channel, "You must specify a rank!", Colours.errorCol);
         }
+
+        [Command("settings musicrank")]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        public async Task SettingsMusicRank(String rank = null)
+        {
+            if (rank != null)
+            {
+                BotConfig config = new BotConfig();
+
+                config.Prefix = BotConfig.Load().Prefix;
+                config.Token = BotConfig.Load().Token;
+                config.NewMemberRank = BotConfig.Load().NewMemberRank;
+                config.UserRank = BotConfig.Load().UserRank;
+                config.MusicRank = rank;
+                config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
+                config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.Save();
+
+                var embed = new EmbedBuilder() { Color = Colours.adminCol };
+                embed.Title = ("Settings Music Rank");
+                embed.Description = ("Music rank has been set to " + rank + " successfully!");
+                await ReplyAsync("", false, embed.Build());
+            }
+            else await errors.sendErrorTemp(Context.Channel, "You must specify a rank!", Colours.errorCol);
+        }
+
+        [Command("settings programmingrank")]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        public async Task SettingsProgrammingRank(String rank = null)
+        {
+            if (rank != null)
+            {
+                BotConfig config = new BotConfig();
+
+                config.Prefix = BotConfig.Load().Prefix;
+                config.Token = BotConfig.Load().Token;
+                config.NewMemberRank = BotConfig.Load().NewMemberRank;
+                config.UserRank = BotConfig.Load().UserRank;
+                config.MusicRank = BotConfig.Load().MusicRank;
+                config.ProgrammingRank = rank;
+                config.GraphicsRank = BotConfig.Load().GraphicsRank;
+                config.Save();
+
+                var embed = new EmbedBuilder() { Color = Colours.adminCol };
+                embed.Title = ("Settings Programming Rank");
+                embed.Description = ("Programming rank has been set to " + rank + " successfully!");
+                await ReplyAsync("", false, embed.Build());
+            }
+            else await errors.sendErrorTemp(Context.Channel, "You must specify a rank!", Colours.errorCol);
+        }
+
+        [Command("settings graphicsrank")]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        public async Task SettingsGraphicsRank(String rank = null)
+        {
+            if (rank != null)
+            {
+                BotConfig config = new BotConfig();
+
+                config.Prefix = BotConfig.Load().Prefix;
+                config.Token = BotConfig.Load().Token;
+                config.NewMemberRank = BotConfig.Load().NewMemberRank;
+                config.UserRank = BotConfig.Load().UserRank;
+                config.MusicRank = BotConfig.Load().MusicRank;
+                config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
+                config.GraphicsRank = rank;
+                config.Save();
+
+                var embed = new EmbedBuilder() { Color = Colours.adminCol };
+                embed.Title = ("Settings Graphics Rank");
+                embed.Description = ("Graphics rank has been set to " + rank + " successfully!");
+                await ReplyAsync("", false, embed.Build());
+            }
+            else await errors.sendErrorTemp(Context.Channel, "You must specify a rank!", Colours.errorCol);
+        }
     }
 }
