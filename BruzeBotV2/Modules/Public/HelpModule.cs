@@ -58,7 +58,10 @@ namespace BruzeBotV2.Modules.Public
                                     BotConfig.Load().Prefix + "ranks - Shows how many members are in each rank" + "\n" +
                                     BotConfig.Load().Prefix + "help - I think you know this command" + "\n" +
                                     BotConfig.Load().Prefix + "rank add <user|music|programming|graphics> - Used to set your rank" + "\n" +
-                                    BotConfig.Load().Prefix + "rank remove <user|music|programming|graphics> - Used to remove the rank");
+                                    BotConfig.Load().Prefix + "rank remove <user|music|programming|graphics> - Used to remove the rank" + "\n" +
+                                    BotConfig.Load().Prefix + "subranks - View all sub ranks" + "\n" +
+                                    BotConfig.Load().Prefix + "subrank add <rank> - Join the sub rank" + "\n" + 
+                                    BotConfig.Load().Prefix + "subrank remove <rank> - Leave the sub rank");
 
             await Context.Channel.SendMessageAsync("", false, embed);
         }
@@ -79,8 +82,8 @@ namespace BruzeBotV2.Modules.Public
                                  BotConfig.Load().Prefix + "settings userrank <rank> - Change the user rank" + "\n" +
                                  BotConfig.Load().Prefix + "settings musicrank <rank> - Change the music rank" + "\n" +
                                  BotConfig.Load().Prefix + "settings programmingrank <rank> - Change the programming rank" + "\n" +
-                                 BotConfig.Load().Prefix + "settings graphicsrank <rank> - Change the graphics rank" + "\n");
-
+                                 BotConfig.Load().Prefix + "settings graphicsrank <rank> - Change the graphics rank" + "\n" +
+                                 BotConfig.Load().Prefix + "subrank add <rank> - Add a sub rank (Max: " + SubRanksSaves.Load().MaxRanks + ")" + "\n");
 
             await Context.Channel.SendMessageAsync("", false, embed);
         }
