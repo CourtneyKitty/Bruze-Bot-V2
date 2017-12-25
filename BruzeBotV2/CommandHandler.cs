@@ -32,39 +32,21 @@ namespace BruzeBotV2
 
         public async Task AnnounceLeftUser(SocketGuildUser user) {
             BotConfig config = new BotConfig();
-            config.Prefix = BotConfig.Load().Prefix;
-            config.Token = BotConfig.Load().Token;
-            config.NewMemberRank = BotConfig.Load().NewMemberRank;
-            config.UserRank = BotConfig.Load().UserRank;
-            config.MusicRank = BotConfig.Load().MusicRank;
-            config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
-            config.GraphicsRank = BotConfig.Load().GraphicsRank;
-            config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
-            config.Messages = BotConfig.Load().Messages;
+            config = Update.UpdateConfig(config);
             config.Members = BotConfig.Load().Members - 1;
             config.Save();
 
             var ranks = new RankSaves();
+
+            config = Update.UpdateConfig(config);
             ranks.newMembersCount = RankSaves.Load().newMembersCount - 1;
-            ranks.userCount = RankSaves.Load().userCount;
-            ranks.musicCount = RankSaves.Load().musicCount;
-            ranks.programmingCount = RankSaves.Load().programmingCount;
-            ranks.graphicsCount = RankSaves.Load().graphicsCount;
             ranks.Save();
         }
 
         public async Task AnnounceUserJoined(SocketGuildUser user)
         {
             BotConfig config = new BotConfig();
-            config.Prefix = BotConfig.Load().Prefix;
-            config.Token = BotConfig.Load().Token;
-            config.NewMemberRank = BotConfig.Load().NewMemberRank;
-            config.UserRank = BotConfig.Load().UserRank;
-            config.MusicRank = BotConfig.Load().MusicRank;
-            config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
-            config.GraphicsRank = BotConfig.Load().GraphicsRank;
-            config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
-            config.Messages = BotConfig.Load().Messages;
+            config = Update.UpdateConfig(config);
             config.Members = BotConfig.Load().Members + 1;
             config.Save();
 
@@ -103,17 +85,8 @@ namespace BruzeBotV2
             if (prefix != null)
             {
                 BotConfig config = new BotConfig();
-
+                config = Update.UpdateConfig(config);
                 config.Prefix = prefix;
-                config.Token = BotConfig.Load().Token;
-                config.NewMemberRank = BotConfig.Load().NewMemberRank;
-                config.UserRank = BotConfig.Load().UserRank;
-                config.MusicRank = BotConfig.Load().MusicRank;
-                config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
-                config.GraphicsRank = BotConfig.Load().GraphicsRank;
-                config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
-                config.Messages = BotConfig.Load().Messages;
-                config.Members = BotConfig.Load().Members;
                 config.Save();
 
                 await bot.SetGameAsync(BotConfig.Load().Prefix + "help");
@@ -134,16 +107,8 @@ namespace BruzeBotV2
         public async Task messageCount(SocketMessage msg)
         {
             BotConfig config = new BotConfig();
-            config.Prefix = BotConfig.Load().Prefix;
-            config.Token = BotConfig.Load().Token;
-            config.NewMemberRank = BotConfig.Load().NewMemberRank;
-            config.UserRank = BotConfig.Load().UserRank;
-            config.MusicRank = BotConfig.Load().MusicRank;
-            config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
-            config.GraphicsRank = BotConfig.Load().GraphicsRank;
-            config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
+            config = Update.UpdateConfig(config);
             config.Messages = BotConfig.Load().Messages + 1;
-            config.Members = BotConfig.Load().Members;
             config.Save();
         }
 

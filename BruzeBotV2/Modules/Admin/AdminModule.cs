@@ -67,17 +67,8 @@ namespace BruzeBotV2.Modules.Admin
             if (token != null)
             {
                 BotConfig config = new BotConfig();
-
-                config.Prefix = BotConfig.Load().Prefix;
+                config = Update.UpdateConfig(config);
                 config.Token = token;
-                config.NewMemberRank = BotConfig.Load().NewMemberRank;
-                config.UserRank = BotConfig.Load().UserRank;
-                config.MusicRank = BotConfig.Load().MusicRank;
-                config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
-                config.GraphicsRank = BotConfig.Load().GraphicsRank;
-                config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
-                config.Messages = BotConfig.Load().Messages;
-                config.Members = BotConfig.Load().Members;
                 config.Save();
 
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
@@ -95,17 +86,8 @@ namespace BruzeBotV2.Modules.Admin
             if (newmember != null)
             {
                 BotConfig config = new BotConfig();
-
-                config.Prefix = BotConfig.Load().Prefix;
-                config.Token = BotConfig.Load().Token;
+                config = Update.UpdateConfig(config);
                 config.NewMemberRank = newmember;
-                config.UserRank = BotConfig.Load().UserRank;
-                config.MusicRank = BotConfig.Load().MusicRank;
-                config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
-                config.GraphicsRank = BotConfig.Load().GraphicsRank;
-                config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
-                config.Messages = BotConfig.Load().Messages;
-                config.Members = BotConfig.Load().Members;
                 config.Save();
 
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
@@ -123,17 +105,8 @@ namespace BruzeBotV2.Modules.Admin
             if (userrank != null)
             {
                 BotConfig config = new BotConfig();
-
-                config.Prefix = BotConfig.Load().Prefix;
-                config.Token = BotConfig.Load().Token;
-                config.NewMemberRank = BotConfig.Load().NewMemberRank;
+                config = Update.UpdateConfig(config);
                 config.UserRank = userrank;
-                config.MusicRank = BotConfig.Load().MusicRank;
-                config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
-                config.GraphicsRank = BotConfig.Load().GraphicsRank;
-                config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
-                config.Messages = BotConfig.Load().Messages;
-                config.Members = BotConfig.Load().Members;
                 config.Save();
 
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
@@ -151,17 +124,8 @@ namespace BruzeBotV2.Modules.Admin
             if (rank != null)
             {
                 BotConfig config = new BotConfig();
-
-                config.Prefix = BotConfig.Load().Prefix;
-                config.Token = BotConfig.Load().Token;
-                config.NewMemberRank = BotConfig.Load().NewMemberRank;
-                config.UserRank = BotConfig.Load().UserRank;
+                config = Update.UpdateConfig(config);;
                 config.MusicRank = rank;
-                config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
-                config.GraphicsRank = BotConfig.Load().GraphicsRank;
-                config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
-                config.Messages = BotConfig.Load().Messages;
-                config.Members = BotConfig.Load().Members;
                 config.Save();
 
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
@@ -179,17 +143,8 @@ namespace BruzeBotV2.Modules.Admin
             if (rank != null)
             {
                 BotConfig config = new BotConfig();
-
-                config.Prefix = BotConfig.Load().Prefix;
-                config.Token = BotConfig.Load().Token;
-                config.NewMemberRank = BotConfig.Load().NewMemberRank;
-                config.UserRank = BotConfig.Load().UserRank;
-                config.MusicRank = BotConfig.Load().MusicRank;
+                config = Update.UpdateConfig(config);
                 config.ProgrammingRank = rank;
-                config.GraphicsRank = BotConfig.Load().GraphicsRank;
-                config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
-                config.Messages = BotConfig.Load().Messages;
-                config.Members = BotConfig.Load().Members;
                 config.Save();
 
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
@@ -207,17 +162,8 @@ namespace BruzeBotV2.Modules.Admin
             if (rank != null)
             {
                 BotConfig config = new BotConfig();
-
-                config.Prefix = BotConfig.Load().Prefix;
-                config.Token = BotConfig.Load().Token;
-                config.NewMemberRank = BotConfig.Load().NewMemberRank;
-                config.UserRank = BotConfig.Load().UserRank;
-                config.MusicRank = BotConfig.Load().MusicRank;
-                config.ProgrammingRank = BotConfig.Load().ProgrammingRank;
+                config = Update.UpdateConfig(config);
                 config.GraphicsRank = rank;
-                config.welcomeChannelId = BotConfig.Load().welcomeChannelId;
-                config.Messages = BotConfig.Load().Messages;
-                config.Members = BotConfig.Load().Members;
                 config.Save();
 
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
