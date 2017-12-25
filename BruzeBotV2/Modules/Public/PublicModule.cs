@@ -25,7 +25,8 @@ namespace BruzeBotV2.Modules.Public
             embed.Title = ("PING");
             embed.Description = ("PONG");
 
-            await Context.Channel.SendMessageAsync("", false, embed);
+            var message = await Context.Channel.SendMessageAsync("", false, embed);
+            await Delete.DelayDeleteEmbed(message, 30);
         }
 
         [Command("bot info")]
@@ -41,7 +42,8 @@ namespace BruzeBotV2.Modules.Public
                                     "Developer: " + References.DEV + "\n" +
                                     "Developer Website: " + References.DEVWEB);
 
-            await Context.Channel.SendMessageAsync("", false, embed);
+            var message = await Context.Channel.SendMessageAsync("", false, embed);
+            await Delete.DelayDeleteEmbed(message, 30);
         }
 
         [Command("messages count")]
@@ -55,7 +57,8 @@ namespace BruzeBotV2.Modules.Public
             embed.Title = ("Message Count");
             embed.Description = ("There has been " + messages + " messages since this feature was added!");
 
-            await Context.Channel.SendMessageAsync("", false, embed);
+            var message = await Context.Channel.SendMessageAsync("", false, embed);
+            await Delete.DelayDeleteEmbed(message, 30);
         }
 
         [Command("members count")]
@@ -69,7 +72,8 @@ namespace BruzeBotV2.Modules.Public
             embed.Title = ("Members Count");
             embed.Description = ("There are " + members + " members in the discord!");
 
-            await Context.Channel.SendMessageAsync("", false, embed);
+            var message = await Context.Channel.SendMessageAsync("", false, embed);
+            await Delete.DelayDeleteEmbed(message, 30);
         }
     }
 }

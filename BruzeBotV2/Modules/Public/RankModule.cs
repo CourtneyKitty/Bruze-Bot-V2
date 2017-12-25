@@ -230,7 +230,8 @@ namespace BruzeBotV2.Modules.Public
             embed.WithFooter(footer);
             embed.WithCurrentTimestamp();
 
-            await Context.Channel.SendMessageAsync("", false, embed);
+            var message = await Context.Channel.SendMessageAsync("", false, embed);
+            await Delete.DelayDeleteEmbed(message, 30);
         }
 
         /** Sub Ranks **/
@@ -292,7 +293,8 @@ namespace BruzeBotV2.Modules.Public
 
             embed.Description = (desc);
 
-            await Context.Channel.SendMessageAsync("", false, embed);
+            var message = await Context.Channel.SendMessageAsync("", false, embed);
+            await Delete.DelayDeleteEmbed(message, 30);
         }
     }
 }

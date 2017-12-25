@@ -59,7 +59,8 @@ namespace BruzeBotV2.Modules.Admin
             embed.AddField(programmingField);
             embed.AddField(graphicsField);
 
-            await Context.Channel.SendMessageAsync("", false, embed);
+            var message = await Context.Channel.SendMessageAsync("", false, embed);
+            await Delete.DelayDeleteEmbed(message, 30);
         }
 
         [Command("settings token")]
@@ -78,7 +79,9 @@ namespace BruzeBotV2.Modules.Admin
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
                 embed.Title = ("Settings Token");
                 embed.Description = ("Token has been set to " + token + " successfully!");
-                await ReplyAsync("", false, embed.Build());
+
+                var message = await ReplyAsync("", false, embed.Build());
+                await Delete.DelayDeleteEmbed(message, 30);
             }
             else await errors.sendErrorTemp(Context.Channel, "You must specify a token!", Colours.errorCol);
         }
@@ -99,7 +102,8 @@ namespace BruzeBotV2.Modules.Admin
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
                 embed.Title = ("Settings New Member Rank");
                 embed.Description = ("New member rank has been set to " + newmember + " successfully!");
-                await ReplyAsync("", false, embed.Build());
+                var message = await ReplyAsync("", false, embed.Build());
+                await Delete.DelayDeleteEmbed(message, 30);
             }
             else await errors.sendErrorTemp(Context.Channel, "You must specify a rank!", Colours.errorCol);
         }
@@ -120,7 +124,8 @@ namespace BruzeBotV2.Modules.Admin
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
                 embed.Title = ("Settings User Rank");
                 embed.Description = ("User rank has been set to " + userrank + " successfully!");
-                await ReplyAsync("", false, embed.Build());
+                var message = await ReplyAsync("", false, embed.Build());
+                await Delete.DelayDeleteEmbed(message, 30);
             }
             else await errors.sendErrorTemp(Context.Channel, "You must specify a rank!", Colours.errorCol);
         }
@@ -141,7 +146,8 @@ namespace BruzeBotV2.Modules.Admin
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
                 embed.Title = ("Settings Music Rank");
                 embed.Description = ("Music rank has been set to " + rank + " successfully!");
-                await ReplyAsync("", false, embed.Build());
+                var message = await ReplyAsync("", false, embed.Build());
+                await Delete.DelayDeleteEmbed(message, 30);
             }
             else await errors.sendErrorTemp(Context.Channel, "You must specify a rank!", Colours.errorCol);
         }
@@ -162,7 +168,8 @@ namespace BruzeBotV2.Modules.Admin
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
                 embed.Title = ("Settings Programming Rank");
                 embed.Description = ("Programming rank has been set to " + rank + " successfully!");
-                await ReplyAsync("", false, embed.Build());
+                var message = await ReplyAsync("", false, embed.Build());
+                await Delete.DelayDeleteEmbed(message, 30);
             }
             else await errors.sendErrorTemp(Context.Channel, "You must specify a rank!", Colours.errorCol);
         }
@@ -183,7 +190,8 @@ namespace BruzeBotV2.Modules.Admin
                 var embed = new EmbedBuilder() { Color = Colours.adminCol };
                 embed.Title = ("Settings Graphics Rank");
                 embed.Description = ("Graphics rank has been set to " + rank + " successfully!");
-                await ReplyAsync("", false, embed.Build());
+                var message = await ReplyAsync("", false, embed.Build());
+                await Delete.DelayDeleteEmbed(message, 30);
             }
             else await errors.sendErrorTemp(Context.Channel, "You must specify a rank!", Colours.errorCol);
         }
@@ -219,7 +227,7 @@ namespace BruzeBotV2.Modules.Admin
                     embed.Title = "Create Sub Rank";
                     embed.Description = "The sub rank '" + title + "' was created successfully!";
                     var message = await Context.Channel.SendMessageAsync("", false, embed);
-                    await Delete.DelayDeleteMessage(message, 10);
+                    await Delete.DelayDeleteMessage(message, 30);
                 }
                 else await errors.sendErrorTemp(Context.Channel, "You have used up all sub ranks!", Colours.errorCol);
             }

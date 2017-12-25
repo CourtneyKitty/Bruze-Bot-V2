@@ -29,7 +29,8 @@ namespace BruzeBotV2.Modules.Public
                                     BotConfig.Load().Prefix + "help general - General Commands Help" + "\n" +
                                     BotConfig.Load().Prefix + "help admin - Admin Commands Help");
 
-            await Context.Channel.SendMessageAsync("", false, embed);
+            var message = await Context.Channel.SendMessageAsync("", false, embed);
+            await Delete.DelayDeleteEmbed(message, 30);
         }
 
         [Command("help new")]
@@ -44,7 +45,8 @@ namespace BruzeBotV2.Modules.Public
             embed.Title = ("Bruze MPG New Member Help");
             embed.Description = (BotConfig.Load().Prefix + "rank add <user|music|programming|graphics> - Used to set your rank to enter the full discord");
 
-            await Context.Channel.SendMessageAsync("", false, embed);
+            var message = await Context.Channel.SendMessageAsync("", false, embed);
+            await Delete.DelayDeleteEmbed(message, 30);
         }
 
         [Command("help general")]
@@ -69,7 +71,8 @@ namespace BruzeBotV2.Modules.Public
                                     BotConfig.Load().Prefix + "subrank add <rank> - Join the sub rank" + "\n" + 
                                     BotConfig.Load().Prefix + "subrank remove <rank> - Leave the sub rank");
 
-            await Context.Channel.SendMessageAsync("", false, embed);
+            var message = await Context.Channel.SendMessageAsync("", false, embed);
+            await Delete.DelayDeleteEmbed(message, 30);
         }
 
         [Command("help admin")]
@@ -93,7 +96,8 @@ namespace BruzeBotV2.Modules.Public
                                  BotConfig.Load().Prefix + "settings graphicsrank <rank> - Change the graphics rank" + "\n" +
                                  BotConfig.Load().Prefix + "subrank add <rank> - Add a sub rank (Max: " + SubRanksSaves.Load().MaxRanks + ")" + "\n");
 
-            await Context.Channel.SendMessageAsync("", false, embed);
+            var message = await Context.Channel.SendMessageAsync("", false, embed);
+            await Delete.DelayDeleteEmbed(message, 30);
         }
     }
 }
