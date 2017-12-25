@@ -20,7 +20,7 @@ namespace BruzeBotV2.Modules.Public
             var chan = Context.Channel;
             var userName = Context.User as SocketGuildUser;
             var newMemberRole = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == BotConfig.Load().NewMemberRank);
-
+            await Context.Message.DeleteAsync();
             if (rank.ToLower().Equals("user"))
             {
                 var user = Context.User;
@@ -139,6 +139,7 @@ namespace BruzeBotV2.Modules.Public
             var chan = Context.Channel;
             var user = Context.User;
             var userName = user as SocketGuildUser;
+            await Context.Message.DeleteAsync();
 
             if (rank.ToLower().Equals("user"))
             {
@@ -202,6 +203,7 @@ namespace BruzeBotV2.Modules.Public
         [Command("ranks")]
         public async Task ranks()
         {
+            await Context.Message.DeleteAsync();
             var members = BotConfig.Load().Members;
             var users = RankSaves.Load().userCount;
             var music = RankSaves.Load().musicCount;
@@ -236,6 +238,7 @@ namespace BruzeBotV2.Modules.Public
         [Command("subrank add")]
         public async Task AddSubRank([Remainder] string rank = null)
         {
+            await Context.Message.DeleteAsync();
             if (rank != null)
             {
                 var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == rank);
@@ -253,6 +256,7 @@ namespace BruzeBotV2.Modules.Public
         [Command("subrank remove")]
         public async Task RemoveSubRank([Remainder] string rank = null)
         {
+            await Context.Message.DeleteAsync();
             if (rank != null)
             {
                 var role = Context.Guild.Roles.FirstOrDefault(x => x.Name.ToString() == rank);
@@ -270,6 +274,7 @@ namespace BruzeBotV2.Modules.Public
         [Command("subranks")]
         public async Task SubRanks()
         {
+            await Context.Message.DeleteAsync();
             var embed = new EmbedBuilder() { Color = Colours.helpCol };
 
             embed.Title = ("Sub Ranks");

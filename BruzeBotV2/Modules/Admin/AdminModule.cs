@@ -18,6 +18,8 @@ namespace BruzeBotV2.Modules.Admin
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task Settings()
         {
+            await Context.Message.DeleteAsync();
+
             string serverName = "Bruze MPG Community";
             string token = BotConfig.Load().Token;
             string prefix = BotConfig.Load().Prefix;
@@ -64,6 +66,8 @@ namespace BruzeBotV2.Modules.Admin
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task SettingsToken(String token = null)
         {
+            await Context.Message.DeleteAsync();
+
             if (token != null)
             {
                 BotConfig config = new BotConfig();
@@ -83,6 +87,8 @@ namespace BruzeBotV2.Modules.Admin
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task SettingsNewMember(String newmember = null)
         {
+            await Context.Message.DeleteAsync();
+
             if (newmember != null)
             {
                 BotConfig config = new BotConfig();
@@ -102,6 +108,8 @@ namespace BruzeBotV2.Modules.Admin
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task SettingsUserRank(String userrank = null)
         {
+            await Context.Message.DeleteAsync();
+
             if (userrank != null)
             {
                 BotConfig config = new BotConfig();
@@ -121,6 +129,8 @@ namespace BruzeBotV2.Modules.Admin
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task SettingsMusicRank(String rank = null)
         {
+            await Context.Message.DeleteAsync();
+
             if (rank != null)
             {
                 BotConfig config = new BotConfig();
@@ -140,6 +150,8 @@ namespace BruzeBotV2.Modules.Admin
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task SettingsProgrammingRank(String rank = null)
         {
+            await Context.Message.DeleteAsync();
+
             if (rank != null)
             {
                 BotConfig config = new BotConfig();
@@ -159,6 +171,8 @@ namespace BruzeBotV2.Modules.Admin
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task SettingsGraphicsRank(String rank = null)
         {
+            await Context.Message.DeleteAsync();
+
             if (rank != null)
             {
                 BotConfig config = new BotConfig();
@@ -179,6 +193,8 @@ namespace BruzeBotV2.Modules.Admin
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task CreateSubRank([Remainder] string title = null)
         {
+            await Context.Message.DeleteAsync();
+
             if (title != null)
             { 
                 if (SubRanksSaves.Load().MaxRanks > SubRanksSaves.Load().SubRanks)

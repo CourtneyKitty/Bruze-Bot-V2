@@ -18,6 +18,8 @@ namespace BruzeBotV2.Modules.Public
         [Command("ping")]
         public async Task ping()
         {
+            await Context.Message.DeleteAsync();
+
             var embed = new EmbedBuilder() { Color = Colours.generalCol };
 
             embed.Title = ("PING");
@@ -29,6 +31,8 @@ namespace BruzeBotV2.Modules.Public
         [Command("bot info")]
         public async Task botInfo()
         {
+            await Context.Message.DeleteAsync();
+
             var embed = new EmbedBuilder() { Color = Colours.generalCol };
 
             embed.Title = ("Bot Info");
@@ -43,6 +47,7 @@ namespace BruzeBotV2.Modules.Public
         [Command("messages count")]
         public async Task messagesCount()
         {
+            await Context.Message.DeleteAsync();
             var messages = BotConfig.Load().Messages;
 
             var embed = new EmbedBuilder() { Color = Colours.generalCol };
@@ -56,6 +61,7 @@ namespace BruzeBotV2.Modules.Public
         [Command("members count")]
         public async Task membersCount()
         {
+            await Context.Message.DeleteAsync();
             var members = BotConfig.Load().Members;
 
             var embed = new EmbedBuilder() { Color = Colours.generalCol };

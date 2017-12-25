@@ -20,6 +20,8 @@ namespace BruzeBotV2.Modules.Public
         [Remarks("Server Help.")]
         public async Task Help()
         {
+            await Context.Message.DeleteAsync();
+
             var embed = new EmbedBuilder() { Color = Colours.helpCol };
             
             embed.Title = ("Bruze MPG Help");
@@ -35,6 +37,8 @@ namespace BruzeBotV2.Modules.Public
         [Remarks("Help for new members.")]
         public async Task HelpNew()
         {
+            await Context.Message.DeleteAsync();
+
             var embed = new EmbedBuilder() { Color = Colours.helpCol };
 
             embed.Title = ("Bruze MPG New Member Help");
@@ -48,6 +52,8 @@ namespace BruzeBotV2.Modules.Public
         [Remarks("Help for general commands.")]
         public async Task HelpGen()
         {
+            await Context.Message.DeleteAsync();
+
             var embed = new EmbedBuilder() { Color = Colours.helpCol };
 
             embed.Title = ("Bruze MPG General Help");
@@ -72,6 +78,8 @@ namespace BruzeBotV2.Modules.Public
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task HelpAdmin()
         {
+            await Context.Message.DeleteAsync();
+
             var embed = new EmbedBuilder() { Color = Colours.helpCol };
 
             embed.Title = ("Bruze MPG New Member Help");
