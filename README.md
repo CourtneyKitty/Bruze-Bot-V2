@@ -15,6 +15,9 @@ The general commands are as follows.
 - help <section> - Displays the help for that section
 - rank add <rank> - Adds them to the rank
 - rank remove <rank> - Removes them from the rank
+- subranks - Lists all sub ranks available
+- subrank add <rank> - Adds the user to the sub rank
+- subrank remove <rank> - Removes the user from the sub rank
 
 ## Admin Commands
 - settings - Displays the current bot settings (prefix, token etc)
@@ -25,6 +28,7 @@ The general commands are as follows.
 - settings musicrank <rank> - Changes the music rank
 - settings programmingrank <rank> - Changes the programming rank
 - settings graphicsrank <rank> - Changes the graphics rank
+- subrank create <rank> - Creates the sub rank
 
 ## To be added
 - Possibly a kick and ban command. Easy to add, but possibly pointless
