@@ -45,6 +45,8 @@ namespace BruzeBotV2
             switch (lmsg.Severity)
             {
                 case LogSeverity.Critical:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    break;
                 case LogSeverity.Error:
                     Console.ForegroundColor = ConsoleColor.Red;
                     break;
@@ -55,8 +57,10 @@ namespace BruzeBotV2
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
                 case LogSeverity.Verbose:
-                case LogSeverity.Debug:
                     Console.ForegroundColor = ConsoleColor.DarkGray;
+                    break;
+                case LogSeverity.Debug:
+                    Console.ForegroundColor = ConsoleColor.Green;
                     break;
             }
             Console.WriteLine($"{DateTime.Now} [{lmsg.Severity,8}] {lmsg.Source}: {lmsg.Message}");
